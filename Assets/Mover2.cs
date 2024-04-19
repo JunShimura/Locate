@@ -13,9 +13,11 @@ public class Mover2 : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Vector3 pos = transform.position;
-            pos.x = pos.x * Mathf.Cos(a / 180.0f) - pos.y * Mathf.Sin(a / 180.0f);
-            pos.y = pos.x * Mathf.Sin(a / 180.0f) + pos.y * Mathf.Cos(a / 180.0f);
-            transform.position = pos;
+            var newPos = pos;
+            var r = Mathf.Deg2Rad * a;  //ƒ‰ƒWƒAƒ“’l‚É•ÏŠ·
+            newPos.x = pos.x * Mathf.Cos(r) - pos.y * Mathf.Sin(r);
+            newPos.y = pos.x * Mathf.Sin(r) + pos.y * Mathf.Cos(r);
+            transform.position = newPos;
         }
     }
 
