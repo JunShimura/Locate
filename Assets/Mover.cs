@@ -19,8 +19,8 @@ public class Mover : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0)) {
             Vector3 pos = transform.position;
-            pos.x = a * pos.x + b;
-            pos.y = c * pos.y + d;
+            pos.x = a * pos.x + b;  //x'=ax+b
+            pos.y = c * pos.y + d;  //y'=cy+d
             transform.position = pos;
         }
     }
