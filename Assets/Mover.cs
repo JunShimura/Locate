@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using TMPro;
 
+[RequireComponent(typeof(LineRenderer))]
 public class Mover : MonoBehaviour
 {
     [SerializeField] float a = 1;
@@ -14,10 +16,18 @@ public class Mover : MonoBehaviour
 
     [SerializeField] Transform[] targets;
 
-    // Update is called once per frame
+    private LineRenderer lineRenderer;
+    [SerializeField] TextMeshProUGUI textMeshProUGUI;
+    private void Awake()
+    {
+        lineRenderer = GetComponent<LineRenderer>();
+        textMeshProUGUI = GetComponentInChildren<TextMeshProUGUI>();
+        SetLine();
+
+    }
+
     void Update()
     {
-
         if (Input.GetMouseButtonDown(0))
         {
             Debug.Log("pressed");
@@ -28,6 +38,15 @@ public class Mover : MonoBehaviour
                 pos.y = d * pos.x + e * pos.y + f;  //y'=dx+ey+f
                 target.position = pos;
             }
+            SetLine();
+        }
+    }
+    void SetLine()
+    {
+        lineRenderer.positionCount = targets.Length;
+        for (var i = 0; i < targets.Length; i++)
+        {
+            lineRenderer.SetPosition(i, targets[i].position);
         }
     }
 
