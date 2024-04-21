@@ -39,6 +39,8 @@ public class Mover : MonoBehaviour
                 target.position = pos;
             }
             SetLine();
+            textMeshProUGUI.text = "x'=" + a.ToString("F3") + "x+" + b.ToString("F3") + "y+" + c.ToString("F3")
+                + "\ny'=" + d.ToString("F3") + "x+" + e.ToString("F3") + "y+" + f.ToString("F3");
         }
     }
     void SetLine()
