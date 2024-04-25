@@ -34,9 +34,13 @@ public class Mover : MonoBehaviour
             foreach (Transform target in targets)
             {
                 Vector3 pos = target.position;
-                pos.x = a * pos.x + b * pos.y + c;  //x'=ax+by+c
-                pos.y = d * pos.x + e * pos.y + f;  //y'=dx+ey+f
-                target.position = pos;
+                Vector3 newPos = new Vector3();
+                newPos.x = a * pos.x + b * pos.y + c;  //x'=ax+by+c
+                newPos.y = d * pos.x + e * pos.y + f;  //y'=dx+ey+f
+                //float r = Mathf.PI / 4.0f;
+                //newPos.x = Mathf.Cos(r) * pos.x - Mathf.Sin(r) * pos.y + c;  //x'=ax+by+c
+                //newPos.y = Mathf.Sin(r) * pos.x + Mathf.Cos(r) * pos.y + f;  //y'=dx+ey+f
+                target.position = newPos;
             }
             SetLine();
             textMeshProUGUI.text = "x'=" + a.ToString("F3") + "x+" + b.ToString("F3") + "y+" + c.ToString("F3")
