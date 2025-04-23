@@ -11,6 +11,6 @@ public class Forced : MonoBehaviour
 
     private void Start()
     {
-        GetComponent<Rigidbody>().velocity = speed;   
+        GetComponent<Rigidbody>().linearVelocity = speed;   
     }
 }
